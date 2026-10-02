@@ -10,15 +10,21 @@
   "users": [
     {
       "id": "2be9e412-807b-4f3e-9b31-3503489a1429",
-      "username": "admin",
+      "username": "clar",
       "hash": "$2a$12$UuEXIJNnVLNa291V5iN5oemoyRC3XCoUpnA9urUiHBXZITjbupG4q",
-      "role": "admin"
+      "role": "user"
     },
     {
       "id": "eea620fa-4593-4af8-a676-58292916930c",
       "username": "raffy",
       "hash": "$2a$12$nDUxVnbqB8/FWFsYzHoW9ODDbysuorGtG5FfkvjRmccKAqvQWi/h.",
       "role": "user"
+    },
+    {
+      "id": "8a154a76-c932-4b92-bffd-545f8ddc04f9",
+      "username": "admin",
+      "hash": "$2a$12$JdSkrUQZcJTktVSr9DuMzuIJSXGlltcaaA/ybhUnLWH9.aQJA5tn6",
+      "role": "admin"
     }
   ]
 }
