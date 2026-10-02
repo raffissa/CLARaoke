@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Starlight Karaoke</title><meta name="color-scheme" content="dark"><link rel="stylesheet" href="styles.css"></head>
+<title>Starlight Karaoke</title><meta name="color-scheme" content="dark"><link rel="stylesheet" href="style.css"></head>
 <body>
 <a class="skip" href="#player">Skip to player</a>
 <header class="top">
@@ -22,7 +22,7 @@
       <div class="controls">
         <input id="seek" type="range" min="0" max="1000" value="0" aria-label="Seek">
         <div class="row">
-          <button id="pp" class="icon" aria-label="Play">▶</button>
+          <button id="prev" class="icon" aria-label="Previous song">⏮</button><button id="pp" class="icon" aria-label="Play">▶</button><button id="next" class="icon" aria-label="Next song">⏭</button>
           <span id="time" class="time">0:00 / 0:00</span>
           <span class="grow"></span>
           <button id="mute" class="icon" aria-label="Mute">🔊</button>
@@ -36,9 +36,9 @@
   </section>
   <aside class="recs" aria-labelledby="recTitle">
     <div class="rechead"><h2 id="recTitle">Recommended Songs</h2><div id="genres" class="chips" role="group" aria-label="Filter by genre"></div></div>
-    <ul id="list" class="list"></ul>
+    <div id="recScroll" class="recscroll"><ul id="list" class="list"></ul>
     <div id="empty" class="state" hidden></div>
-    <div id="sentinel" aria-hidden="true"></div>
+    <div id="sentinel" aria-hidden="true"></div></div>
   </aside>
 </main>
 <dialog id="authDlg"><form method="dialog" id="authForm" class="modal">
@@ -54,14 +54,13 @@
     <label>Song title *<input name="title" required maxlength="120"></label>
     <label>Artist *<input name="artist" required maxlength="120"></label>
     <label>Category / genre *<input name="genre" required maxlength="40" list="genreList"><datalist id="genreList"></datalist></label>
-    <label>Thumbnail image<input id="thumbIn" name="thumb" type="file" accept=".jpg,.jpeg,.png,.webp,image/*"></label>
+    <label>Thumbnail image <small>JPG, PNG or WebP · max 5 MB</small><span class="filepick"><input class="vh" id="thumbIn" name="thumb" type="file" accept=".jpg,.jpeg,.png,.webp,image/*"><span class="pickbtn">Choose file</span><span class="fname empty" id="thumbName">No file chosen</span></span></label>
   </div>
-  <label>Karaoke video * <small>MP4, WebM or OGV · max 500 MB</small><input id="videoIn" name="video" type="file" accept=".mp4,.webm,.ogv,video/*"></label>
-  <label>Captions <small>optional · .vtt</small><input name="captions" type="file" accept=".vtt"></label>
+  <label>Karaoke video * <small>MP4, WebM or OGV · max 500 MB</small><span class="filepick"><input class="vh" id="videoIn" name="video" type="file" accept=".mp4,.webm,.ogv,video/*"><span class="pickbtn">Choose file</span><span class="fname empty" id="videoName">No file chosen</span></span></label>
+  <label>Captions <small>optional · .vtt</small><span class="filepick"><input class="vh" id="captionsIn" name="captions" type="file" accept=".vtt"><span class="pickbtn">Choose file</span><span class="fname empty" id="captionsName">No file chosen</span></span></label>
   <label>Description <small>optional</small><textarea name="description" rows="2" maxlength="1000"></textarea></label>
   <input type="hidden" name="duration">
-  <div class="previews"><img id="thumbPrev" alt="Thumbnail preview" hidden><video id="vidPrev" controls preload="metadata" hidden></video></div>
-  <p id="songErr" class="err" role="alert"></p>
+    <p id="songErr" class="err" role="alert"></p>
   <div class="progress" id="prog" hidden><div id="bar"></div><span id="pct">0%</span></div>
   <div class="actions"><button type="button" class="ghost" data-close>Cancel</button><button class="primary" id="saveBtn">Save &amp; Publish</button></div>
 </form></dialog>
